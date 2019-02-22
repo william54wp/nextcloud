@@ -2,28 +2,28 @@ version: '2'
 
 volumes:
   nextcloud:
-  # db:
+  db:
 
 services:
-  # db:
-  #   image: mariadb
-  #   command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
-  #   restart: always
-  #   volumes:
-  #     - db:/var/lib/mysql
-  #   environment:
-  #     - MYSQL_ROOT_PASSWORD=DsixCikbx8RT6gX7UFXHrA==
-  #     - MYSQL_PASSWORD=ouMl9/HdcOUIEa1qQOsRYA==
-  #     - MYSQL_DATABASE=nextcloud
-  #     - MYSQL_USER=nextcloud
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=DsixCikbx8RT6gX7UFXHrA==
+      - MYSQL_PASSWORD=ouMl9/HdcOUIEa1qQOsRYA==
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
   app:
     image: nextcloud
     volumes:
       - nextcloud:/var/www/html
-      - $PWD/config/config.php:/var/www/html/config/config.php
+      - $PWD/config/nextcloud/config:/var/www/html/config
+      - $PWD/data:/var/www/html/data
     ports:
       - 8080:80
-
   # web:
   #   image: nginx:alpine
   #   volumes:
