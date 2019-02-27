@@ -34,13 +34,23 @@
 
         4. 备份
 
+    2. 安装 nextcloud
+        
+        1. 拉取相关镜像
 
-## 前期测试
-1. docker 拉取 nextcloud 的官方镜像
+                docker pull nextcloud:latest
 
-        docker pull nextcloud:latest
+                docker pull nextcloud:fpm
 
-        docker pull nextcloud:fpm
+                docker pull mariadb:latest
 
-    其中 nextcloud:latest 为集成了 apache 的官方应用，nextcloud:fpm 为基于 php:fpm 并集成了相应扩展的 php 镜像，后续因需要部署 https 所以先试验 nextcloud:latest 后使用 nextcloud:fpm 实际部署,同时配置 nginx 以实现远程下载 （aria2c -D)
+                docker pull nginx:latest
 
+        1. 测试标准 nextcloud
+
+                docker run -d --name nextcloud -p 80:80 nextcloud
+            > 访问 192.168.56.101 （虚拟机IP） 正常访问
+            
+        1. 测试使用 mysql 的 nextcloud
+
+            使用以下 [docker-compose](docker-compose-1.yml)
