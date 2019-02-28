@@ -35,7 +35,10 @@
         4. 备份
 
     2. 安装 nextcloud
-        
+
+        > 相关配置和方法在这里
+        [nextcloud/docker](https://github.com/nextcloud/docker) 
+
         1. 拉取相关镜像
 
                 docker pull nextcloud:latest
@@ -54,3 +57,6 @@
         1. 测试使用 mysql 的 nextcloud
 
             使用以下 [docker-compose](docker-compose-1.yml)
+
+        1. 测试使用 nginx + mariadb + nextcloud
+            
